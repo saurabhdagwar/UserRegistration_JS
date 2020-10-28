@@ -3,8 +3,8 @@ let pattern ;
 function validate(pattern) {
     return NAME_PATTERN.test(pattern);
 }
-function checkPattern() {
-    var check = validate("Saurabh"); 
+function checkPattern(pattern) {
+    var check = validate(pattern); 
     if(check == true){
         console.log("Regex Approved");
     }
@@ -12,4 +12,5 @@ function checkPattern() {
         console.log("Pattern Rejected");
     }
 }
-checkPattern();
+checkPattern("Saurabh");
+checkPattern("Dagwar");
