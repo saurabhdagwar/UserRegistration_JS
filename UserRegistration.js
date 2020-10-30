@@ -6,7 +6,7 @@ const PASSWORD = "Password";
 //Variables
 let namePattern = new RegExp("^[A-Z]{1}[a-z]{2,}$");
 let emailPattern = new RegExp("^[a-zA-Z0-9]+([._+#][a-zA-Z0-9]+)*@[a-zA-Z1-9]+.[a-zA-Z]{2,4}(.[a-zA-Z]{2,3})?$");
-let mobilePattern = new RegExp("(^[0-9]{1,3}[ ]*)?[6-9]+[0-9]{9,9}$");
+let mobilePattern = new RegExp("^([0-9]{2}[ ]+)?[6-9]{1}[0-9]{9}$");
 let passwordPattern = new RegExp("^(?=.*[a-z])(?=.*[0-9])(?=.*[A-Z])(?=.*[@#$%*&+?/!]{1}).{8,}$");
 let pattern;
 let check;
@@ -40,16 +40,27 @@ checkType = (type, pattern) => {
   }
 };
 
-function checkPattern(type, pattern) {
+checkPattern = (type, pattern) => {
   check = checkType(type, pattern);
   if (check == true) {
-    return "Regex Approved";
+    console.log("Regex Approved");
   } else {
-    return "Pattern Rejected";
+    console.log("Pattern Rejected");
   }
 }
-console.log(`Validate First Name: ${checkPattern(NAME, "Saurabh")}`);
-console.log(`Validate Last Name: ${checkPattern(NAME, "Dagwar")}`);
-console.log(`Validate Email: ${checkPattern(EMAIL, "saurabhdagwar@gmail.com")}`);
-console.log(`Validate Mobile Number: ${checkPattern(MOBILE, "91 8856852313")}`);
-console.log(`Validate Password: ${checkPattern(PASSWORD, "Saurabdagwar@1")}`);
+
+userInput = () => {
+    var prompt = require('prompt-sync')();
+    var firstName = prompt('Enter First Name: ');
+    checkPattern(NAME,firstName);
+    var lastName = prompt("Enter Last Name: ");
+    checkPattern(NAME,lastName);
+    var email = prompt("Enter Email: ");
+    checkPattern(EMAIL,email);
+    var mobile = prompt("Enter Mobile Number: ");
+    checkPattern(MOBILE,mobile);
+    var password = prompt("Enter Password: ");
+    checkPattern(PASSWORD,password);
+
+}
+userInput();
